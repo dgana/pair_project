@@ -1,0 +1,138 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Ek Mukta', sans-serif;
+}
+
+#intro {
+    margin-top: -20px;
+    background-color: rgb(22, 26, 24);
+    height: 960px;
+}
+
+.container {
+    position: relative;
+    background-color: red;
+    display: block;
+    top: 150px;
+    width: 85%;
+    height: 65%;
+    margin: 0 auto;
+}
+
+.container h1 {
+    font-family: 'russo one', sans-serif;
+    text-align: center;
+    font-size: 36px;
+    color: rgb(170, 170, 170);
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
+.character-box {
+    width: 100%;
+    height: 50%;
+    background-color: rgb(22, 26, 24);
+    float: left;
+}
+
+.image-box {
+    width: 100%;
+    background-color: lightblue;
+    margin: 35px 0px;
+    float: left;
+}
+
+@media (min-width:1420px){
+  .image-box img {
+      margin: 0px 12%;
+  }
+}
+
+@media (min-width:760px) and (max-width:1420px){
+  .image-box img {
+      margin: 0px 11%;
+  }
+}
+
+@media (max-width:760px){
+  .image-box img {
+      margin: 0px 9%;
+  }
+}
+
+.character-box:hover .character-img-box {
+    opacity: 1;
+}
+
+.character-img-box {
+    text-align: center;
+    width: 65%;
+    height: auto;
+    margin: auto;
+    border: 3px solid rgba(29, 27, 27, 0.68);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    opacity: 0.35;
+    transition: 1s;
+}
+
+.resize {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+
+.menu p {
+    margin-left: 35%;
+    color: white;
+}
+
+.menu em {
+    color: rgb(73, 195, 30);
+}
+
+.text-box {
+    width: 80%;
+    margin: auto;
+}
+
+.text-box h2 {
+    color: gray;
+}
+
+.menu li {
+    line-height: 36px;
+    font-size: 18px;
+    color: rgb(205, 205, 205);
+}
+
+button:focus {
+    outline: 0;
+}
+
+.menu button {
+    transition: 0.5s;
+    opacity: 0.5;
+    margin-top: 85px;
+    width: 100%;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 26px;
+    background: linear-gradient(red, yellow);
+    cursor: pointer;
+}
+
+.menu button:hover {
+    opacity: 0.8;
+}
+
+.menu li {
+    line-height: 42px;
+    font-size: 19px;
+}
