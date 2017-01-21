@@ -224,10 +224,12 @@ html, body {
 }
 
 .status-command-box {
+  position: absolute;
+  bottom: -15px;
   width: 97%;
   height: 15%;
   margin: 20px 10px;
-  padding-left: 190px;
+  padding-left: 200px;
 }
 
 .btn{
@@ -247,6 +249,60 @@ html, body {
     background: linear-gradient(to bottom right, rgba(255, 0, 0, 0.6), rgba(255, 255, 0, 0.8)); /* Standard syntax */
 }
 
-.btn:focus{
+.btn:focus {
   outline: 0;
+}
+
+.status-description-bar-left {
+  float: left;
+  width: 48%;
+  height: 14%;
+  margin: 1px;
+  margin-left: 6px;
+}
+
+.status-description-bar-right {
+  float: left;
+  width: 48%;
+  height: 14%;
+  margin: 1px;
+  margin-left: 6px;
+}
+
+.status-description-bar-left p {
+  display: inline-block;
+  line-height: 100px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 52px;
+  padding-left: 15px;
+}
+
+.status-description-bar-right p {
+  display: inline-block;
+  line-height: 52px;
+  margin: 0;
+  font-size: 20px;
+  line-height: 52px;
+  padding-left: 15px;
+}
+
+.status-description-bar-left i {
+  display: inline-block;
+  line-height: 52px;
+  margin: 0;
+  font-size: 26px;
+  font-family: "russo one";
+  line-height: 52px;
+  padding-left: 15px;
+}
+
+.status-description-bar-right i {
+  display: inline-block;
+  line-height: 52px;
+  margin: 0;
+  font-size: 26px;
+  font-family: "russo one";
+  line-height: 52px;
+  padding-left: 15px;
 }
