@@ -3,12 +3,15 @@ html, body {
     padding: 0;
     height: 100vh;
     font-family: 'Ek Mukta', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: url("../assets/background-img/img-2.jpg");
 }
 
 .footer {
   position: absolute;
   bottom: 0px;
-  height: 38%;
+  height: 38vh;
   width: 100%;
 }
 
@@ -23,10 +26,10 @@ html, body {
 .rank {
   display: inline-block;
   vertical-align: middle;
-  border-top: 1px solid rgba(255,0,0,0.3);
+  border-top: 1px solid rgba(100, 0, 0, 0.5);
   width: 24%;
   height: 100%;
-  background-color: rgba(200,200,200,0.6);
+  background-color: rgba(200,200,200,0.9);
   margin: 1px;
   float: left;
   text-align: center;
@@ -45,8 +48,7 @@ html, body {
 .rank-title {
   width: 100%;
   height: 16%;
-  background-color: rgba(60, 60, 60,0.6);
-  margin: 2px;
+  background-color: rgba(60, 60, 60,0.8);
   text-align: center;
 }
 
@@ -61,16 +63,16 @@ html, body {
   margin: 1px;
   width: 100%;
   height: 41%;
-  border-top: 1px solid rgba(255,0,0,0.3);
+  border-top: 1px solid rgba(100, 0, 0, 0.5);
 }
 
 .result-box {
   position: absolute;
   right: 2%;
-  bottom: 5%;
+  bottom: 4%;
   width: 22%;
   height: 100%;
-  background-color: orange;
+  background-color: rgba(166, 166, 166, 0.9);
   margin: 1px;
   float: right;
 }
@@ -78,8 +80,7 @@ html, body {
 .result-title {
   width: 100%;
   height: 16%;
-  background-color: green;
-  margin: 2px;
+  background-color: rgba(60, 60, 60,0.6);
   text-align: center;
 }
 
@@ -96,15 +97,13 @@ html, body {
   top: 2%;
   width: 34%;
   height: 55%;
-  background-color: rgba(255,0,0,0.5);
   margin: 1px;
 }
 
 .navbar-title {
   width: 98%;
   height: 10%;
-  background-color: green;
-  margin: 2px;
+  background-color: rgba(60, 60, 60,0.6);
   text-align: left;
   padding-left: 2%;
 }
@@ -117,9 +116,57 @@ html, body {
 }
 
 .navbox {
-  width: 98%;
+  width: 100%;
   height: 90%;
-  background-color: orange;
+  background-color: rgba(166, 166, 166, 0.9);
+}
+
+.name-box {
+  width: 95%;
+  height: 10%;
+  margin: 0px 10px;
+  padding-top: 10px;
+  text-align: left;
+}
+
+.name-box p {
+  display: inline-block;
+  margin: 0;
+  font-size: 20px;
+}
+
+.name-box i {
+  display: inline-block;
+  font-size: 22px;
+  font-family: "russo one";
+  padding-left: 12px;
+}
+
+.text-box{
+  width: 92%;
+  height: 60%;
+  background-color: rgb(242,242,242);
+  padding: 10px;
+  margin-left: 2%;
+  overflow: auto;
+}
+
+.text-box p {
+  margin: 0;
+}
+
+.command-button {
+  position: relative;
+  top: 0px;
+  width: 97%;
+  height: 15%;
+  margin: 10px;
+  padding-left: 27%;
+}
+
+.btn.find-monster{
+  width: 38%;
+  height: 65%;
 }
 
 .status-box {
@@ -128,7 +175,7 @@ html, body {
   top: 2%;
   width: 60%;
   height: 55%;
-  background-color: rgba(166, 166, 166, 0.7);
+  background-color: rgba(200, 200, 200, 0.9);
 }
 
 .status {
@@ -153,7 +200,7 @@ html, body {
   margin: 2px;
   padding: 5px 10px;
   width: 72%;
-  background-color: rgba(166, 166, 166, 0.7);
+  background-color: rgba(166, 166, 166, 0.9);
   height: 70%;
 }
 
@@ -190,6 +237,8 @@ html, body {
 }
 
 .arrow-right {
+  position: relative;
+  right: 10px;
   margin: auto;
   margin-top: 8px;
   width: 0;
@@ -198,6 +247,10 @@ html, body {
   border-bottom: 15px solid transparent;
   border-left: 15px solid green;
   cursor: pointer;
+}
+
+.arrow-right:active {
+  right: 8px;
 }
 
 .status-description {
@@ -210,8 +263,7 @@ html, body {
 .status-title {
   width: 98%;
   height: 10%;
-  background-color: green;
-  margin: 2px;
+  background-color: rgba(60, 60, 60,0.8);
   text-align: left;
   padding-left: 2%;
 }
@@ -229,7 +281,7 @@ html, body {
   width: 97%;
   height: 15%;
   margin: 20px 10px;
-  padding-left: 200px;
+  padding-left: 34%;
 }
 
 .btn{
