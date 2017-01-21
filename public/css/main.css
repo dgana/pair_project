@@ -8,7 +8,7 @@ html, body {
 .footer {
   position: absolute;
   bottom: 0px;
-  height: 35%;
+  height: 38%;
   width: 100%;
   background-color: rgba(255,0,0,0.5);
 }
@@ -44,6 +44,13 @@ html, body {
   font-family: "shojumaru";
 }
 
+.split-rank {
+  margin: 1px;
+  width: 100%;
+  height: 41%;
+  background-color: rgba(255,0,0,0.5);
+}
+
 .result-box {
   position: absolute;
   right: 2%;
@@ -70,14 +77,36 @@ html, body {
   font-family: "shojumaru";
 }
 
-.nav-bar {
+.navbar {
   position: absolute;
   right: 2%;
   top: 2%;
   width: 34%;
-  height: 58%;
+  height: 55%;
   background-color: rgba(255,0,0,0.5);
   margin: 1px;
+}
+
+.navbar-title {
+  width: 98%;
+  height: 10%;
+  background-color: green;
+  margin: 2px;
+  text-align: left;
+  padding-left: 2%;
+}
+
+.navbar-title p {
+  margin: 0;
+  line-height: 52px;
+  font-size: 26px;
+  font-family: "shojumaru";
+}
+
+.navbox {
+  width: 98%;
+  height: 90%;
+  background-color: orange;
 }
 
 .status-box {
@@ -85,6 +114,36 @@ html, body {
   left: 3%;
   top: 2%;
   width: 60%;
-  height: 58%;
+  height: 55%;
   background-color: rgba(255,0,0,0.5);
+}
+
+.status {
+  display: inline-block;
+  width: 49%;
+  height: 90%;
+  background-color: orange;
+}
+
+.status-description {
+  display: inline-block;
+  width: 49%;
+  height: 90%;
+  background-color: orange;
+}
+
+.status-title {
+  width: 98%;
+  height: 10%;
+  background-color: green;
+  margin: 2px;
+  text-align: left;
+  padding-left: 2%;
+}
+
+.status-title p {
+  margin: 0;
+  line-height: 52px;
+  font-size: 26px;
+  font-family: "shojumaru";
 }
