@@ -31,44 +31,7 @@ let classArcher = [
   { name: 'Fletcher', str: 60, con: 5, int: 5, spr: 5, dex: 30, complete: 0}
 ];
 
-// Update Player Status
-function updateStatus(stringArr) {
-  db.Players.findOne().then(function (find) {
-    for (let i = 0; i < stringArr.length; i++) {
-      let str = find.strength+1;
-      let con = find.constitution+1;
-      let int = find.intelligence+1;
-      let spr = find.spirit+1;
-      let dex = find.dexterity+1;
-      if (stringArr[i].toLowerCase() == "str") {
-        find.update({
-          strength: str
-        })
-      }
-      else if (stringArr[i].toLowerCase() == "con") {
-        find.update({
-          constitution: con
-        })
-      }
-      else if (stringArr[i].toLowerCase() == "int") {
-        find.update({
-          intelligence: int
-        })
-      }
-      else if (stringArr[i].toLowerCase() == "spr") {
-        find.update({
-          spirit: spr
-        })
-      }
-      else if (stringArr[i].toLowerCase() == "dex") {
-        find.update({
-          dexterity: dex
-        })
-      }
-    }
-  })
-}
-
+// Add Player
 function add(string) {
   db.Players.create().then(function (find) {
     if (string === "Swordman") {
@@ -101,6 +64,7 @@ function add(string) {
         dexterity: 10
       })
     }
+    console.log(find.dataValues);
   });
 }
 
@@ -155,60 +119,89 @@ function resetStatus(string) {
   })
 }
 
-// Assign Job After Update Status
-function assignJob () {
-  db.Players.findAll({raw:true}).then(function (find) {
-    if(find[0].job == "Swordman") {
-      jobSwordman();
+// Update Player Status
+function updateStatus(stringArr) {
+  db.Players.findOne().then(function (find) {
+    for (let i = 0; i < stringArr.length; i++) {
+      let str = find.strength+1;
+      let con = find.constitution+1;
+      let int = find.intelligence+1;
+      let spr = find.spirit+1;
+      let dex = find.dexterity+1;
+      if (stringArr[i].toLowerCase() == "str") {
+        find.update({
+          strength: str
+        })
+      }
+      else if (stringArr[i].toLowerCase() == "con") {
+        find.update({
+          constitution: con
+        })
+      }
+      else if (stringArr[i].toLowerCase() == "int") {
+        find.update({
+          intelligence: int
+        })
+      }
+      else if (stringArr[i].toLowerCase() == "spr") {
+        find.update({
+          spirit: spr
+        })
+      }
+      else if (stringArr[i].toLowerCase() == "dex") {
+        find.update({
+          dexterity: dex
+        })
+      }
     }
-    else if(find[0].job == "Wizard") {
-      jobWizard();
+    if(find.dataValues.job == classSwordman[0].name || find.dataValues.job == classSwordman[1].name || find.dataValues.job == classSwordman[2].name || find.dataValues.job == classSwordman[3].name || find.dataValues.job == classSwordman[4].name || find.dataValues.job == classSwordman[5].name || find.dataValues.job == classSwordman[6].name) {
+      jobSwordman(find);
     }
-    else if(find[0].job == "Archer") {
-      jobArcher();
+    else if(find.dataValues.job == classWizard[0].name || find.dataValues.job == classWizard[1].name || find.dataValues.job == classWizard[2].name || find.dataValues.job == classWizard[3].name || find.dataValues.job == classWizard[4].name || find.dataValues.job == classWizard[5].name || find.dataValues.job == classWizard[6].name) {
+      jobWizard(find);
+    }
+    else if(find.dataValues.job == classArcher[0].name || find.dataValues.job == classArcher[1].name || find.dataValues.job == classArcher[2].name || find.dataValues.job == classArcher[3].name || find.dataValues.job == classArcher[4].name || find.dataValues.job == classArcher[5].name || find.dataValues.job == classArcher[6].name) {
+      jobArcher(find);
     }
   })
 }
 
-function jobSwordman () {
-  db.Players.findOne().then(function (find) {
-    for (let j = 0; j < classSwordman.length; j++) {
-      if(find.strength >= classSwordman[j].str && find.constitution >= classSwordman[j].con) {
-        find.update({
-          job: classSwordman[j].name
-        })
-      }
+function jobSwordman (find) {
+  for (let j = 0; j < classSwordman.length; j++) {
+    if(find.dataValues.strength >= classSwordman[j].str && find.dataValues.constitution >= classSwordman[j].con) {
+      find.update({
+        job: classSwordman[j].name
+      })
     }
-  })
+  }
+  console.log(find.dataValues);
 }
 
-function jobWizard () {
-  db.Players.findOne().then(function (find) {
-    for (let j = 0; j < classWizard.length; j++) {
-      if(find.intelligence >= classWizard[j].int && find.spirit >= classWizard[j].spr) {
-        find.update({
-          job: classWizard[j].name
-        })
-      }
+function jobWizard (find) {
+  for (let j = 0; j < classWizard.length; j++) {
+    if(find.dataValues.intelligence >= classWizard[j].int && find.dataValues.spirit >= classWizard[j].spr) {
+      find.update({
+        job: classWizard[j].name
+      })
     }
-  })
+  }
+  console.log(find.dataValues);
 }
 
-function jobArcher () {
-  db.Players.findOne().then(function (find) {
-    for (let j = 0; j < classArcher.length; j++) {
-      if(find.strength >= classArcher[j].str && find.dexterity >= classArcher[j].dex) {
-        find.update({
-          job: classArcher[j].name
-        })
-      }
+function jobArcher (find) {
+  for (let j = 0; j < classArcher.length; j++) {
+    if(find.dataValues.strength >= classArcher[j].str && find.dataValues.dexterity >= classArcher[j].dex) {
+      find.update({
+        job: classArcher[j].name
+      })
     }
-  })
+  }
+  console.log(find.dataValues);
 }
 
 // View
 function help() {
-  let showArr = ["$ node todo.js help", "$ node todo.js dummy", "$ node todo.js job", "$ node todo.js set"];
+  let showArr = ["$ node todo.js help", "$ node todo.js add", "$ node todo.js reset", "$ node todo.js delete", "$ node todo.js update", "$ node todo.js show"];
   console.log(showArr.join("\n"));
 }
 
@@ -226,11 +219,14 @@ function run(param) {
     case "help":
       help();
       break;
-    case "dummy":
-      addDummies();
+    case "add":
+      add(param[1]);
       break;
     case "reset":
       resetStatus(param[1]);
+      break;
+    case "delete":
+      deleted();
       break;
     case "update":
       updateStatus(["str","str","str","str","str",
@@ -239,20 +235,8 @@ function run(param) {
       "con","con","con","con","con",
       "con","con","con","con","con"]);
       break;
-    case "assign":
-      assignJob();
-      break;
     case "show":
       show();
-      break;
-    case "reset":
-      resetStatus();
-      break;
-    case "add":
-      add();
-      break;
-    case "delete":
-      deleted();
       break;
     default:
       console.log("Please input correct command.");
