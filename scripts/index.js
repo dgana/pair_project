@@ -1,6 +1,9 @@
 "use strict"
 
 const db = require('../models');
+const express = require('express');
+const path = require('path');
+const app = express();ß
 
 // Models
 let classSwordman = [
@@ -219,14 +222,11 @@ function run(param) {
     case "help":
       help();
       break;
-    case "add":
+    case "create":
       add(param[1]);
       break;
     case "reset":
       resetStatus(param[1]);
-      break;
-    case "delete":
-      deleted();
       break;
     case "update":
       updateStatus(["str","str","str","str","str",
@@ -234,6 +234,9 @@ function run(param) {
       "str","str","str","str","str",
       "con","con","con","con","con",
       "con","con","con","con","con"]);
+      break;
+    case "delete":
+      deleted();
       break;
     case "show":
       show();
