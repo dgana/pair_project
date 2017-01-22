@@ -31,100 +31,146 @@ let classArcher = [
   { name: 'Fletcher', str: 60, con: 5, int: 5, spr: 5, dex: 30, complete: 0}
 ];
 
-function addDummies() {
-  db.Players.create(
-    {strength: 10, constitution: 10}
-  ).then(function (data) {
-    console.log(`Added ${data} to your Player's database...`);
-  }).catch(function (err) {
-    console.log(err.message);
-  });
-}
-
-function setStartJob(string) {
-  db.Players.findOne().then(function (find) {
-    find.update({
-      job: string
-    })
-  })
-}
-
-var k = 1;
-var j = 1;
-
+// Update Player Status
 function updateStatus(stringArr) {
   db.Players.findOne().then(function (find) {
     for (let i = 0; i < stringArr.length; i++) {
       let str = find.strength+1;
       let con = find.constitution+1;
+      let int = find.intelligence+1;
+      let spr = find.spirit+1;
+      let dex = find.dexterity+1;
       if (stringArr[i].toLowerCase() == "str") {
         find.update({
           strength: str
         })
-        console.log("STR: " + find.strength);
       }
       else if (stringArr[i].toLowerCase() == "con") {
         find.update({
           constitution: con
         })
-        console.log("CON: " + find.constitution);
       }
-      if(k + j === stringArr.length + 2) {
-        k = 1;
-        j = 1;
+      else if (stringArr[i].toLowerCase() == "int") {
+        find.update({
+          intelligence: int
+        })
+      }
+      else if (stringArr[i].toLowerCase() == "spr") {
+        find.update({
+          spirit: spr
+        })
+      }
+      else if (stringArr[i].toLowerCase() == "dex") {
+        find.update({
+          dexterity: dex
+        })
       }
     }
   })
 }
-  //   if (stringArr[i].toLowerCase() == "con") {
-  //     db.Players.findOne().then(function (find) {
-  //       find.update({
-  //         constitution: j++
-  //       })
-  //       console.log("CON: " + find.constitution);
-  //     })
-  //     j = 1;
-  //   }
-  //   else if (stringArr[i].toLowerCase() == "int") {
-  //     db.Players.findOne().then(function (find) {
-  //       // find.update({
-  //       //   intelligence: i++
-  //       // })
-  //     })
-  //   }
-  //   else if (stringArr[i].toLowerCase() == "spr") {
-  //     db.Players.findOne().then(function (find) {
-  //       // find.update({
-  //       //   spirit: i++
-  //       // })
-  //     })
-  //   }
-  //   else if (stringArr[i].toLowerCase() == "dex") {
-  //     db.Players.findOne().then(function (find) {
-  //       // find.update({
-  //       //   dexterity: i++
-  //       // })
-  //     })
-  //   }
-//   }
-// }
 
+function add(string) {
+  db.Players.create().then(function (find) {
+    if (string === "Swordman") {
+      find.update({
+        job: string,
+        strength: 10,
+        constitution: 10,
+        intelligence: 5,
+        spirit: 5,
+        dexterity: 5
+      })
+    }
+    else if (string === "Wizard") {
+      find.update({
+        job: string,
+        strength: 5,
+        constitution: 5,
+        intelligence: 10,
+        spirit: 10,
+        dexterity: 5
+      })
+    }
+    else if (string === "Archer") {
+      find.update({
+        job: string,
+        strength: 10,
+        constitution: 5,
+        intelligence: 5,
+        spirit: 5,
+        dexterity: 10
+      })
+    }
+  });
+}
+
+// Delete Player
+function deleted() {
+  db.Players.findAll().then(function (find) {
+    find.forEach(function (data) {
+      data.destroy();
+    })
+  })
+}
+
+// Reset Player Status
+function resetStatus(string) {
+  db.Players.findAll().then(function (find) {
+    find.forEach(function (data) {
+      data.destroy();
+    })
+  }).then(function () {
+    db.Players.create().then(function (find) {
+      if (string === "Swordman") {
+        find.update({
+          job: string,
+          strength: 10,
+          constitution: 10,
+          intelligence: 5,
+          spirit: 5,
+          dexterity: 5
+        })
+      }
+      else if (string === "Wizard") {
+        find.update({
+          job: string,
+          strength: 5,
+          constitution: 5,
+          intelligence: 10,
+          spirit: 10,
+          dexterity: 5
+        })
+      }
+      else if (string === "Archer") {
+        find.update({
+          job: string,
+          strength: 10,
+          constitution: 5,
+          intelligence: 5,
+          spirit: 5,
+          dexterity: 10
+        })
+      }
+    });
+  })
+}
+
+// Assign Job After Update Status
 function assignJob () {
   db.Players.findAll({raw:true}).then(function (find) {
-    console.log(find.job);
-    if(find.job.toLowerCase() == "swordman") {
-      jobSwordman(find);
+    if(find[0].job == "Swordman") {
+      jobSwordman();
     }
-    else if(find.job.toLowerCase() == "wizard") {
-      jobWizard(find);
+    else if(find[0].job == "Wizard") {
+      jobWizard();
     }
-    else if(find.job.toLowerCase() == "archer") {
-      jobArcher(find);
+    else if(find[0].job == "Archer") {
+      jobArcher();
     }
   })
 }
 
-function jobSwordman (player) {
+function jobSwordman () {
   db.Players.findOne().then(function (find) {
     for (let j = 0; j < classSwordman.length; j++) {
       if(find.strength >= classSwordman[j].str && find.constitution >= classSwordman[j].con) {
@@ -134,10 +180,9 @@ function jobSwordman (player) {
       }
     }
   })
-  console.log(player);
 }
 
-function jobWizard (player) {
+function jobWizard () {
   db.Players.findOne().then(function (find) {
     for (let j = 0; j < classWizard.length; j++) {
       if(find.intelligence >= classWizard[j].int && find.spirit >= classWizard[j].spr) {
@@ -147,10 +192,9 @@ function jobWizard (player) {
       }
     }
   })
-  console.log(player);
 }
 
-function jobArcher (player) {
+function jobArcher () {
   db.Players.findOne().then(function (find) {
     for (let j = 0; j < classArcher.length; j++) {
       if(find.strength >= classArcher[j].str && find.dexterity >= classArcher[j].dex) {
@@ -160,13 +204,20 @@ function jobArcher (player) {
       }
     }
   })
-  console.log(player);
 }
 
 // View
 function help() {
   let showArr = ["$ node todo.js help", "$ node todo.js dummy", "$ node todo.js job", "$ node todo.js set"];
   console.log(showArr.join("\n"));
+}
+
+function show() {
+  db.Players.findOne().then(function (find) {
+    console.log(find.dataValues);
+  }).catch(function (err) {
+    console.log(err.message);
+  })
 }
 
 // Controller
@@ -178,8 +229,8 @@ function run(param) {
     case "dummy":
       addDummies();
       break;
-    case "set":
-      setStartJob(param[1]);
+    case "reset":
+      resetStatus(param[1]);
       break;
     case "update":
       updateStatus(["str","str","str","str","str",
@@ -188,8 +239,20 @@ function run(param) {
       "con","con","con","con","con",
       "con","con","con","con","con"]);
       break;
-    case "job":
+    case "assign":
       assignJob();
+      break;
+    case "show":
+      show();
+      break;
+    case "reset":
+      resetStatus();
+      break;
+    case "add":
+      add();
+      break;
+    case "delete":
+      deleted();
       break;
     default:
       console.log("Please input correct command.");
