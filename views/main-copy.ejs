@@ -102,12 +102,14 @@
         <p>Defend: </p><i>198</i>
       </div>
       <div class="experience-bar-box">
-				<p>Experience Bar: </p>
-				<progress value="0" max="1000" id="exp"></progress>
+				<div class="w3-progress-container">
+				  <div id="myBar" class="w3-progressbar w3-green" style="width:1%"></div>
+				</div>
       </div>
-			<div class="status-description-bar-center">
-				<p>Level: </p><i id="current-level">1</i>
+			<div class="status-description-bar-left">
+        <button class="w3-btn" onclick="move()">Add Experience</button>
       </div>
+
 
     </div>
   </div>
@@ -122,10 +124,25 @@
         <p>Name : </p><i> John Doe </i>
       </div>
       <div class="command-button">
-        <button type="button" name="button" class="btn find-monster" onclick="calculateExp()" id="find-monster">Find Monster</button>
+        <button type="button" name="button" class="btn find-monster">Find Monster</button>
       </div>
-      <div class="text-box" id="history">
-
+      <div class="text-box">
+        <p>Player Attack: 271 dmg!</p>
+        <p>Monster Attack: 98 dmg!</p>
+        <p>Player Attack: 134 dmg!</p>
+        <p>Monster Block damage!</p>
+        <p>Player Attack: 271 dmg!</p>
+        <p>Monster Attack: 98 dmg!</p>
+        <p>Player Attack: 134 dmg!</p>
+        <p>Monster Block damage!</p>
+        <p>Player Attack: 271 dmg!</p>
+        <p>Monster Attack: 98 dmg!</p>
+        <p>Player Attack: 134 dmg!</p>
+        <p>Monster Block damage!</p>
+        <p>Player Attack: 271 dmg!</p>
+        <p>Monster Attack: 98 dmg!</p>
+        <p>Player Attack: 134 dmg!</p>
+        <p>Monster Block damage!</p>
       </div>
     </div>
   </div>
@@ -202,11 +219,6 @@
 	let up_spr = document.getElementById('up-spr')
 	let up_dex = document.getElementById('up-dex')
 
-	let current_level = document.getElementById('current-level')
-	let exp = document.getElementById('exp')
-	let history = document.getElementById('history')
-	let find_monster = document.getElementById('find-monster')
-
 	up_str.addEventListener("click", function(){
 		if(limit_status1.innerHTML === "0"){
 			up_str.style.pointerEvents = "none";
@@ -276,36 +288,20 @@
 	limit_status4.innerHTML = 3;
 	limit_status5.innerHTML = 3;
 
-	let monster = ['Dragon','Minotaur','Rocksodon','Rafene','Poculus','Salamander','Marauder','Pantorex','bushpider','Sardine']
-	let monsterExp = [200, 100, 150, 50, 45, 75, 65, 150, 60, 25];
-
-	let textHistory = document.createElement("p")
-
-	let text = history.appendChild(textHistory)
-	let num1 = 500
-	let angka = exp.value
-
-	function calculateExp() {
-		text.innerHTML += `Player Attack ${monster[0]} and gain ${monsterExp[0]}<br>`
-		angka += monsterExp[0]
-		exp.value = angka
-		if(angka >= exp.max){
-			find_monster.disabled = true
-		}
+	function move() {
+	    var elem = document.getElementById("myBar");
+	    var width = 1;
+	    var id = setInterval(frame, 10);
+	    function frame() {
+	        if (width >= 100) {
+	            clearInterval(id);
+	        } else {
+	            width++;
+	            elem.style.width = width + '%';
+	        }
+	    }
 	}
-
-	function shuffle(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-	}
-
 	</script>
-
 </body>
 
 </html>
