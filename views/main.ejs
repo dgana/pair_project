@@ -90,8 +90,8 @@
         </div>
       </div>
       <div class="status-command-box">
-        <button type="button" name="button" class="btn">Submit</button>
-        <button type="button" name="button" class="btn">Reset</button>
+        <button type="button" name="button" class="btn" id="submit-status">Submit</button>
+        <button type="button" name="button" class="btn" id="reset-status">Reset</button>
       </div>
     </div>
     <div class="status-description">
@@ -206,95 +206,134 @@
 	let exp = document.getElementById('exp')
 	let history = document.getElementById('history')
 	let find_monster = document.getElementById('find-monster')
+	let submit_status = document.getElementById('submit-status')
+	let reset_status = document.getElementById('reset-status')
+
+	submit_status.disabled = true
+	reset_status.disabled = true
+
+	up_str.style.pointerEvents = "none";
+	up_con.style.pointerEvents = "none";
+	up_int.style.pointerEvents = "none";
+	up_spr.style.pointerEvents = "none";
+	up_dex.style.pointerEvents = "none";
 
 	up_str.addEventListener("click", function(){
-		if(limit_status1.innerHTML === "0"){
+ 		if(limit_status1.innerHTML === "1"){
+			submit_status.disabled = false
+			reset_status.disabled = false
 			up_str.style.pointerEvents = "none";
+			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
+			decreaseLimitStatus()
 		} else {
 			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
-			limit_status1.innerHTML--
-			limit_status2.innerHTML--
-			limit_status3.innerHTML--
-			limit_status4.innerHTML--
-			limit_status5.innerHTML--
+			decreaseLimitStatus()
 		}
 	});
 	up_con.addEventListener("click", function(){
-		if(limit_status2.innerHTML === "0"){
+		if(limit_status2.innerHTML === "1"){
+			submit_status.disabled = false
+			reset_status.disabled = false
 			up_con.style.pointerEvents = "none";
+			current_con.innerHTML = parseInt(current_con.innerHTML) + 1
+			decreaseLimitStatus()
 		} else {
 			current_con.innerHTML = parseInt(current_con.innerHTML) + 1
-			limit_status1.innerHTML--
-			limit_status2.innerHTML--
-			limit_status3.innerHTML--
-			limit_status4.innerHTML--
-			limit_status5.innerHTML--
+			decreaseLimitStatus()
 		}
-
 	});
 	up_int.addEventListener("click", function(){
-		if(limit_status3.innerHTML === "0"){
+		if(limit_status3.innerHTML === "1"){
+			submit_status.disabled = false
+			reset_status.disabled = false
 			up_int.style.pointerEvents = "none";
+			current_int.innerHTML = parseInt(current_int.innerHTML) + 1
+			decreaseLimitStatus()
 		} else {
 			current_int.innerHTML = parseInt(current_int.innerHTML) + 1
-			limit_status1.innerHTML--
-			limit_status2.innerHTML--
-			limit_status3.innerHTML--
-			limit_status4.innerHTML--
-			limit_status5.innerHTML--
+			decreaseLimitStatus()
 		}
 	});
 	up_spr.addEventListener("click", function(){
-		if(limit_status4.innerHTML === "0"){
+		if(limit_status4.innerHTML === "1"){
+			submit_status.disabled = false
+			reset_status.disabled = false
 			up_spr.style.pointerEvents = "none";
+			current_spr.innerHTML = parseInt(current_spr.innerHTML) + 1
+			decreaseLimitStatus()
 		} else {
 			current_spr.innerHTML = parseInt(current_spr.innerHTML) + 1
-			limit_status1.innerHTML--
-			limit_status2.innerHTML--
-			limit_status3.innerHTML--
-			limit_status4.innerHTML--
-			limit_status5.innerHTML--
+			decreaseLimitStatus()
 		}
 	});
 	up_dex.addEventListener("click", function(){
-		if(limit_status5.innerHTML === "0"){
+		if(limit_status5.innerHTML === "1"){
+			submit_status.disabled = false
+			reset_status.disabled = false
 			up_dex.style.pointerEvents = "none";
+			current_dex.innerHTML = parseInt(current_dex.innerHTML) + 1
+			decreaseLimitStatus()
 		} else {
 			current_dex.innerHTML = parseInt(current_dex.innerHTML) + 1
-			limit_status1.innerHTML--
-			limit_status2.innerHTML--
-			limit_status3.innerHTML--
-			limit_status4.innerHTML--
-			limit_status5.innerHTML--
+			decreaseLimitStatus()
 		}
-
 	});
 
-	limit_status1.innerHTML = 3;
-	limit_status2.innerHTML = 3;
-	limit_status3.innerHTML = 3;
-	limit_status4.innerHTML = 3;
-	limit_status5.innerHTML = 3;
+
+	submit_status.addEventListener("click", function(){
+		find_monster.disabled = false
+		history.innerHTML = "";
+		submit_status.disabled = true
+		reset_status.disabled = true
+	});
+	reset_status.addEventListener("click", function(){
+		find_monster.disabled = false
+		history.innerHTML = "";
+		submit_status.disabled = true
+		reset_status.disabled = true
+	});
+
+
+	// Helper Functions
+	limit_status1.innerHTML = 0;
+	limit_status2.innerHTML = 0;
+	limit_status3.innerHTML = 0;
+	limit_status4.innerHTML = 0;
+	limit_status5.innerHTML = 0;
 
 	let monster = ['Dragon','Minotaur','Rocksodon','Rafene','Poculus','Salamander','Marauder','Pantorex','bushpider','Sardine']
 	let monsterExp = [200, 100, 150, 50, 45, 75, 65, 150, 60, 25];
+	let monsterIndex = [0,1,2,3,4,5,6,7,8,9]
 
-	let textHistory = document.createElement("p")
+	let valueExp = exp.value
 
-	let text = history.appendChild(textHistory)
-	let num1 = 500
-	let angka = exp.value
-
-	function calculateExp() {
-		text.innerHTML += `Player Attack ${monster[0]} and gain ${monsterExp[0]}<br>`
-		angka += monsterExp[0]
-		exp.value = angka
-		if(angka >= exp.max){
+	let calculateExp = () => {
+		let textHistory = document.createElement("p")
+		let text = history.appendChild(textHistory)
+		let i = shuffle(monsterIndex)
+		text.innerHTML += `Player Defeated ${monster[i[0]]} and gain ${monsterExp[i[0]]} exp!<br>`
+		valueExp += monsterExp[i[0]]
+		exp.value = valueExp
+		if(valueExp >= exp.max){
 			find_monster.disabled = true
+			up_str.style.pointerEvents = "auto";
+			up_con.style.pointerEvents = "auto";
+			up_int.style.pointerEvents = "auto";
+			up_spr.style.pointerEvents = "auto";
+			up_dex.style.pointerEvents = "auto";
+			exp.value = 0;
+			exp.max += 100
+			current_level.innerHTML = parseInt(current_level.innerHTML) + 1
+			limit_status1.innerHTML = 3;
+			limit_status2.innerHTML = 3;
+			limit_status3.innerHTML = 3;
+			limit_status4.innerHTML = 3;
+			limit_status5.innerHTML = 3;
+			valueExp = 0
 		}
 	}
 
-	function shuffle(array) {
+	let shuffle = (array) => {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
@@ -302,6 +341,14 @@
         array[j] = temp;
     }
     return array;
+	}
+
+	let decreaseLimitStatus = () => {
+		limit_status1.innerHTML--
+		limit_status2.innerHTML--
+		limit_status3.innerHTML--
+		limit_status4.innerHTML--
+		limit_status5.innerHTML--
 	}
 
 	</script>
