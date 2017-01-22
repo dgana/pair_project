@@ -28,13 +28,13 @@
 					<p>Archer</p>
 				</div>
         <div class="image-box">
-					<div class="character-img-box">
+					<div class="character-img-box" id="swordsman">
 						<img src="assets/characters/swordman/male/swordsman.gif" alt="Swordsman Image">
 					</div>
-					<div class="character-img-box">
+					<div class="character-img-box" id="wizard">
 						<img src="assets/characters/wizard/male/wizard.gif" alt="Wizard Image">
 					</div>
-					<div class="character-img-box">
+					<div class="character-img-box" id="archer">
 						<img src="assets/characters/archer/male/archer.gif" alt="Archer Image">
 					</div>
         </div>
@@ -55,7 +55,25 @@
 			</div>
     </div>
   </div>
+	<input type="hidden" id="classInput" value="">
 
+	<script>
+	let swordsman = document.getElementById('swordsman')
+	let wizard = document.getElementById('wizard')
+	let archer = document.getElementById('archer')
+	let inputClass = document.getElementById('classInput')
+	
+	swordsman.addEventListener("click", function(){
+		inputClass.value = "Swordsman"
+	});
+	wizard.addEventListener("click", function(){
+		inputClass.value = "Wizard"
+	});
+	archer.addEventListener("click", function(){
+		inputClass.value = "Archer"
+	});
+
+	</script>
 </body>
 
 </html>

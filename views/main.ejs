@@ -22,13 +22,13 @@
         <p>Str: </p>
         <div class="status-bar-box">
           <div class="present-status">
-            <p>201</p>
+            <p id="current-str">10</p>
           </div>
           <div class="up-status">
-            <div class="arrow-right"></div>
+            <div class="arrow-right" id="up-str"></div>
           </div>
           <div class="limit-status">
-            <p>2</p>
+            <p id="limit-status-1"></p>
           </div>
         </div>
       </div>
@@ -36,13 +36,13 @@
         <p>Con: </p>
         <div class="status-bar-box">
           <div class="present-status">
-            <p>77</p>
+            <p id="current-con">10</p>
           </div>
           <div class="up-status">
-            <div class="arrow-right"></div>
+            <div class="arrow-right" id="up-con"></div>
           </div>
           <div class="limit-status">
-            <p>2</p>
+            <p id="limit-status-2"></p>
           </div>
         </div>
       </div>
@@ -50,13 +50,13 @@
         <p>Int: </p>
         <div class="status-bar-box">
           <div class="present-status">
-            <p>64</p>
+            <p id="current-int">5</p>
           </div>
           <div class="up-status">
-            <div class="arrow-right"></div>
+            <div class="arrow-right" id="up-int"></div>
           </div>
           <div class="limit-status">
-            <p>2</p>
+            <p id="limit-status-3"></p>
           </div>
         </div>
       </div>
@@ -64,13 +64,13 @@
         <p>Spr: </p>
         <div class="status-bar-box">
           <div class="present-status">
-            <p>241</p>
+            <p id="current-spr">5</p>
           </div>
           <div class="up-status">
-            <div class="arrow-right"></div>
+            <div class="arrow-right" id="up-spr"></div>
           </div>
           <div class="limit-status">
-            <p>2</p>
+            <p id="limit-status-4"></p>
           </div>
         </div>
       </div>
@@ -78,13 +78,13 @@
         <p>Dex: </p>
         <div class="status-bar-box">
           <div class="present-status">
-            <p>124</p>
+            <p id="current-dex">5</p>
           </div>
           <div class="up-status">
-            <div class="arrow-right"></div>
+            <div class="arrow-right" id="up-dex"></div>
           </div>
           <div class="limit-status">
-            <p>2</p>
+            <p id="limit-status-5"></p>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
         <p>Defend: </p><i>198</i>
       </div>
       <div class="status-description-bar-left">
-        <p>Skills: </p>
+        <p>Level: </p><i></i>
       </div>
       <div class="status-description-bar-right">
 
@@ -195,6 +195,80 @@
   </div>
   <!-- End Footer Box -->
 
+	<script>
+	let limit_status1 = document.getElementById('limit-status-1')
+	let limit_status2 = document.getElementById('limit-status-2')
+	let limit_status3 = document.getElementById('limit-status-3')
+	let limit_status4 = document.getElementById('limit-status-4')
+	let limit_status5 = document.getElementById('limit-status-5')
+
+	let current_str = document.getElementById('current-str')
+	let current_con = document.getElementById('current-con')
+	let current_int = document.getElementById('current-int')
+	let current_spr = document.getElementById('current-spr')
+	let current_dex = document.getElementById('current-dex')
+
+	let up_str = document.getElementById('up-str')
+	let up_con = document.getElementById('up-con')
+	let up_int = document.getElementById('up-int')
+	let up_spr = document.getElementById('up-spr')
+	let up_dex = document.getElementById('up-dex')
+
+	up_str.addEventListener("click", function(){
+		if(current_str.innerHTML == 0){
+			up_str.style.right = "100px";
+		} else {
+			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
+			limit_status1.innerHTML--
+			limit_status2.innerHTML--
+			limit_status3.innerHTML--
+			limit_status4.innerHTML--
+			limit_status5.innerHTML--
+		}
+
+	});
+	up_con.addEventListener("click", function(){
+		current_con.innerHTML = parseInt(current_con.innerHTML) + 1
+		limit_status1.innerHTML--
+		limit_status2.innerHTML--
+		limit_status3.innerHTML--
+		limit_status4.innerHTML--
+		limit_status5.innerHTML--
+	});
+	up_int.addEventListener("click", function(){
+		current_int.innerHTML = parseInt(current_int.innerHTML) + 1
+		limit_status1.innerHTML--
+		limit_status2.innerHTML--
+		limit_status3.innerHTML--
+		limit_status4.innerHTML--
+		limit_status5.innerHTML--
+	});
+	up_spr.addEventListener("click", function(){
+		current_spr.innerHTML = parseInt(current_spr.innerHTML) + 1
+		limit_status1.innerHTML--
+		limit_status2.innerHTML--
+		limit_status3.innerHTML--
+		limit_status4.innerHTML--
+		limit_status5.innerHTML--
+	});
+	up_dex.addEventListener("click", function(){
+
+		current_dex.innerHTML = parseInt(current_dex.innerHTML) + 1
+		limit_status1.innerHTML--
+		limit_status2.innerHTML--
+		limit_status3.innerHTML--
+		limit_status4.innerHTML--
+		limit_status5.innerHTML--
+	});
+
+	limit_status1.innerHTML = 3;
+	limit_status2.innerHTML = 3;
+	limit_status3.innerHTML = 3;
+	limit_status4.innerHTML = 3;
+	limit_status5.innerHTML = 3;
+
+
+	</script>
 </body>
 
 </html>
