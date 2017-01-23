@@ -35,7 +35,7 @@
 						<img src="assets/characters/wizard/male/wizard.gif" alt="Wizard Image">
 					</div>
 					<div class="character-img-box" id="archer">
-						<img src="assets/characters/archer/male/archer.gif" alt="Archer Image">
+						<img src="assets/characters/archer/male/archer.gif" alt="Archer Image" onclick="">
 					</div>
         </div>
       </div>
@@ -51,18 +51,21 @@
 				</div>
 			</div>
 			<div class="start-button">
-				<a href="main.ejs" class="button">Start</a>
+				<form class="" action="/className" method="post">
+					<input type="hidden" name="job" id="classInput" value="">
+					<input type="submit" value="Start">
+				</form>
 			</div>
     </div>
   </div>
-	<input type="hidden" id="classInput" value="">
+
 
 	<script>
 	let swordsman = document.getElementById('swordsman')
 	let wizard = document.getElementById('wizard')
 	let archer = document.getElementById('archer')
 	let inputClass = document.getElementById('classInput')
-	
+
 	swordsman.addEventListener("click", function(){
 		inputClass.value = "Swordsman"
 	});
