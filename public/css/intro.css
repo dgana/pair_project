@@ -170,6 +170,7 @@ html, body {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+  cursor: pointer;
     background: red; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(left top, red, yellow); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(bottom right, red, yellow); /* For Opera 11.1 to 12.0 */

@@ -172,7 +172,7 @@ html, body {
 }
 
 .btn.find-monster{
-  width: 38%;
+  width: 45%;
   height: 65%;
 }
 
@@ -206,7 +206,7 @@ html, body {
   float: right;
   margin: 2px;
   padding: 5px 10px;
-  width: 72%;
+  width: 78%;
   background-color: rgba(166, 166, 166, 0.9);
   height: 70%;
 }
@@ -320,7 +320,7 @@ html, body {
 
 .status-description-bar-left {
   float: left;
-  width: 48%;
+  width: 45%;
   height: 14%;
   margin: 1px;
   margin-left: 6px;
@@ -337,7 +337,7 @@ html, body {
 
 .status-description-bar-right {
   float: left;
-  width: 48%;
+  width: 45%;
   height: 14%;
   margin: 1px;
   margin-left: 6px;
