@@ -249,6 +249,30 @@ html, body {
   padding-left: 15px;
 }
 
+input[type="text"] {
+  position: relative;
+  right: 50%;
+  -webkit-appearance: none;
+  background-color: inherit;
+  border-image-source: none;
+  border-image-slice: none;
+  border-image-width: none;
+  border-image-outset: none;
+  border-image-repeat: none;
+  -webkit-rtl-ordering: none;
+  -webkit-user-select: none;
+  cursor: auto;
+  padding: 1px;
+  border-width: 0px;
+  border-style: none;
+  border-color: none;
+  margin: 0;
+  font-size: 32px;
+  font-family: "russo one";
+  line-height: 52px;
+  text-align: center
+}
+
 .arrow-right {
   position: relative;
   right: 10px;

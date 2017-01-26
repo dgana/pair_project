@@ -87,38 +87,72 @@ function resetStatus(string) {
       data.destroy();
     })
   }).then(function () {
-    db.Players.create().then(function (find) {
-      if (string === "Swordman") {
-        find.update({
-          job: string,
-          strength: 10,
-          constitution: 10,
-          intelligence: 5,
-          spirit: 5,
-          dexterity: 5
-        })
-      }
-      else if (string === "Wizard") {
-        find.update({
-          job: string,
-          strength: 5,
-          constitution: 5,
-          intelligence: 10,
-          spirit: 10,
-          dexterity: 5
-        })
-      }
-      else if (string === "Archer") {
-        find.update({
-          job: string,
-          strength: 10,
-          constitution: 5,
-          intelligence: 5,
-          spirit: 5,
-          dexterity: 10
-        })
-      }
-    });
+    if (string === "Swordsman") {
+      db.Players..update({
+        job: string,
+        strength: 10,
+        constitution: 10,
+        intelligence: 5,
+        spirit: 5,
+        dexterity: 5
+      }).then(function (data) {
+        res.redirect('/main');
+      })
+    } else if (string === "Wizard") {
+      db.Players..update({
+        job: string,
+        strength: 10,
+        constitution: 10,
+        intelligence: 5,
+        spirit: 5,
+        dexterity: 5
+      }).then(function () {
+        res.redirect('/main');
+      })
+    } else if (string === "Archer") {
+      db.Players..update({
+        job: string,
+        strength: 10,
+        constitution: 5,
+        intelligence: 5,
+        spirit: 5,
+        dexterity: 10
+      }).then(function () {
+        res.redirect('/main');
+      })
+    }
+    // db.Players.create().then(function (find) {
+    //   if (string === "Swordman") {
+    //     find.update({
+    //       job: string,
+    //       strength: 10,
+    //       constitution: 10,
+    //       intelligence: 5,
+    //       spirit: 5,
+    //       dexterity: 5
+    //     })
+    //   }
+    //   else if (string === "Wizard") {
+    //     find.update({
+    //       job: string,
+    //       strength: 5,
+    //       constitution: 5,
+    //       intelligence: 10,
+    //       spirit: 10,
+    //       dexterity: 5
+    //     })
+    //   }
+    //   else if (string === "Archer") {
+    //     find.update({
+    //       job: string,
+    //       strength: 10,
+    //       constitution: 5,
+    //       intelligence: 5,
+    //       spirit: 5,
+    //       dexterity: 10
+    //     })
+    //   }
+    // });
   })
 }
 
