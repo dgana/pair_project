@@ -11,6 +11,9 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Ek+Mukta|Orbitron|Russo+One|Shojumaru|Bungee+Shade" rel="stylesheet">
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,18 +21,14 @@
     <div class="status-title">
       <p>Status</p>
     </div>
-
-		<form action="/tes" method="post">
     <div class="status">
       <div class="status-bar">
         <p>Str: </p>
         <div class="status-bar-box">
           <div class="present-status">
-						<input type="text" name="str" id="current-str" value="9" readonly="true">
-            <!-- <p id="current-str">10</p> -->
+            <p id="current-str">10</p>
           </div>
           <div class="up-status">
-
             <div class="arrow-right" id="up-str"></div>
           </div>
           <div class="limit-status">
@@ -94,12 +93,10 @@
         </div>
       </div>
       <div class="status-command-box">
-        <input type="submit" class="btn" id="submit-status" value="submit">
-        <button type="button" class="btn" id="reset-status">Reset</button>
+        <button type="button" name="button" class="btn" id="submit-status">Submit</button>
+        <button type="button" name="button" class="btn" id="reset-status">Reset</button>
       </div>
     </div>
-		</form>
-
     <div class="status-description">
       <div class="status-description-bar-left">
         <p>Attack: </p><i>231</i>
@@ -218,11 +215,11 @@
 	submit_status.disabled = true
 	reset_status.disabled = true
 
-	current_str.value = <%= user.strength %>
+	current_str.innerHTML = <%= user.strength %>
 	current_con.innerHTML = <%= user.constitution %>
 	current_int.innerHTML = <%= user.intelligence %>
 	current_spr.innerHTML = <%= user.spirit %>
-	current_dex.innerHTML = <%= user.dexterity %>
+	current_str.innerHTML = <%= user.strength %>
 
 	up_str.style.pointerEvents = "none"
   up_con.style.pointerEvents = "none"
@@ -238,19 +235,27 @@
   let dexterity = "dex"
 
 	up_str.addEventListener("click", function(){
- 		if(limit_status1.innerHTML === "1"){
-			current_str.value = parseInt(current_str.value) + 1
-      submitResetbuttonDisabled()
-      upStatusDisabled()
+		if(limit_status1.innerHTML === "1"){
+			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
+			submitResetbuttonDisabled()
+			upStatusDisabled()
 			decreaseLimitStatus()
-      arr.push(strength)
-      console.log(arr)
+			arr.push(strength)
+			console.log(arr)
 		} else {
-			current_str.value = parseInt(current_str.value) + 1
+			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
 			decreaseLimitStatus()
-      arr.push(strength)
-      console.log(arr)
+			arr.push(strength)
+			console.log(arr)
 		}
+
+		$.ajax({
+	    method: "POST",
+	    url: "/up_status",
+	    data: {up_str: current_str.innerHTML},
+	    dataType: "json"
+	    })
+
 	});
 	up_con.addEventListener("click", function(){
 		if(limit_status2.innerHTML === "1"){

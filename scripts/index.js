@@ -88,7 +88,7 @@ function resetStatus(string) {
     })
   }).then(function () {
     if (string === "Swordsman") {
-      db.Players..update({
+      db.Players.update({
         job: string,
         strength: 10,
         constitution: 10,
@@ -99,7 +99,7 @@ function resetStatus(string) {
         res.redirect('/main');
       })
     } else if (string === "Wizard") {
-      db.Players..update({
+      db.Players.update({
         job: string,
         strength: 10,
         constitution: 10,
@@ -110,7 +110,7 @@ function resetStatus(string) {
         res.redirect('/main');
       })
     } else if (string === "Archer") {
-      db.Players..update({
+      db.Players.update({
         job: string,
         strength: 10,
         constitution: 5,

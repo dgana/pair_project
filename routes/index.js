@@ -28,7 +28,7 @@ router.post('/className', function(req, res, next) {
       intelligence: 5,
       spirit: 5,
       dexterity: 5
-    }).then(function (data) {
+    }).then(function () {
       res.redirect('/main');
     })
   } else if (req.body.job === "Wizard") {
@@ -56,16 +56,15 @@ router.post('/className', function(req, res, next) {
   }
 });
 
-router.post('/tes', function(req, res, next) {
-  console.log(req.body.stren);
-  res.redirect('/')
+router.post('/up_status', function(req, res, next) {
+  db.Players.findById(54).then(function (find) {
+    find.update({
+      strength: req.body.up_str
+    }).then(function(data){
+      res.json(data)
+    })
+  })
 });
-
-// router.get('/todos', function(req, res, next) {
-//   models.Todo.findAll({raw: true}).then(function(todos){
-//     res.json(todos);
-//   })
-// });
 //
 // router.post('/todos/add', function(req, res, next) {
 //   models.Todo.create({title: req.body.title, completed: false}).then(function(todo){
