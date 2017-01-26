@@ -9,17 +9,56 @@ router.get('/', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
   db.Players.findAll().then(function (find) {
-    res.render('main', {user: find[find.length-1]});
+    res.render('main', {user: find[find.length-1], start_job: req.query.job});
   })
 });
 
-// router.post('/reset', function(req, res, next) {
-//   db.Players.findAll().then(function (find) {
-//     res.render('main', {user: find[find.length-1]});
-//   })
-// });
+router.post('/reset', function(req, res, next) {
+  db.Players.findAll({raw:true}).then(function (allPlayers) {
+    db.Players.findById(allPlayers[allPlayers.length-1].id).then(function (find) {
+      if (req.session.class_pick === "Swordsman") {
+        find.update({
+          job: req.session.class_pick,
+          strength: 10,
+          constitution: 10,
+          intelligence: 5,
+          spirit: 5,
+          dexterity: 5,
+          level: 1
+        }).then(function(data){
+          res.redirect('/main')
+        })
+      } else if (req.session.class_pick === "Wizard") {
+        find.update({
+          job: req.session.class_pick,
+          strength: 5,
+          constitution: 5,
+          intelligence: 10,
+          spirit: 10,
+          dexterity: 5,
+          level: 1
+        }).then(function(data){
+          res.redirect('/main')
+        })
+      } else if (req.session.class_pick === "Archer") {
+        find.update({
+          job: req.session.class_pick,
+          strength: 10,
+          constitution: 5,
+          intelligence: 5,
+          spirit: 5,
+          dexterity: 10,
+          level: 1
+        }).then(function(data){
+          res.redirect('/main')
+        })
+      }
+    })
+  })
+});
 
 router.post('/className', function(req, res, next) {
+  req.session.class_pick = req.body.job;
   if (req.body.job === "Swordsman") {
     db.Players.create({
       job: req.body.job,
@@ -27,7 +66,8 @@ router.post('/className', function(req, res, next) {
       constitution: 10,
       intelligence: 5,
       spirit: 5,
-      dexterity: 5
+      dexterity: 5,
+      level: 1
     }).then(function () {
       res.redirect('/main');
     })
@@ -38,7 +78,8 @@ router.post('/className', function(req, res, next) {
       constitution: 5,
       intelligence: 10,
       spirit: 10,
-      dexterity: 5
+      dexterity: 5,
+      level: 1
     }).then(function () {
       res.redirect('/main');
     })
@@ -49,27 +90,77 @@ router.post('/className', function(req, res, next) {
       constitution: 5,
       intelligence: 5,
       spirit: 5,
-      dexterity: 10
+      dexterity: 10,
+      level: 1
     }).then(function () {
       res.redirect('/main');
     })
   }
 });
 
-router.post('/up_status', function(req, res, next) {
-  db.Players.findById(54).then(function (find) {
-    find.update({
-      strength: req.body.up_str
-    }).then(function(data){
-      res.json(data)
+router.post('/up_str', function(req, res, next) {
+  db.Players.findAll({raw:true}).then(function (allPlayers) {
+    db.Players.findById(allPlayers[allPlayers.length-1].id).then(function (find) {
+      find.update({
+        strength: req.body.up_str,
+        level: req.body.up_lvl
+      }).then(function(data){
+        res.json(data)
+      })
     })
   })
 });
-//
-// router.post('/todos/add', function(req, res, next) {
-//   models.Todo.create({title: req.body.title, completed: false}).then(function(todo){
-//     res.json(todo);
-//   })
-// });
+
+router.post('/up_con', function(req, res, next) {
+  db.Players.findAll({raw:true}).then(function (allPlayers) {
+    db.Players.findById(allPlayers[allPlayers.length-1].id).then(function (find) {
+      find.update({
+        constitution: req.body.up_con,
+        level: req.body.up_lvl
+      }).then(function(data){
+        res.json(data)
+      })
+    })
+  })
+});
+
+router.post('/up_int', function(req, res, next) {
+  db.Players.findAll({raw:true}).then(function (allPlayers) {
+    db.Players.findById(allPlayers[allPlayers.length-1].id).then(function (find) {
+      find.update({
+        intelligence: req.body.up_int,
+        level: req.body.up_lvl
+      }).then(function(data){
+        res.json(data)
+      })
+    })
+  })
+});
+
+router.post('/up_spr', function(req, res, next) {
+  db.Players.findAll({raw:true}).then(function (allPlayers) {
+    db.Players.findById(allPlayers[allPlayers.length-1].id).then(function (find) {
+      find.update({
+        spirit: req.body.up_spr,
+        level: req.body.up_lvl
+      }).then(function(data){
+        res.json(data)
+      })
+    })
+  })
+});
+
+router.post('/up_dex', function(req, res, next) {
+  db.Players.findAll({raw:true}).then(function (allPlayers) {
+    db.Players.findById(allPlayers[allPlayers.length-1].id).then(function (find) {
+      find.update({
+        dexterity: req.body.up_dex,
+        level: req.body.up_lvl
+      }).then(function(data){
+        res.json(data)
+      })
+    })
+  })
+});
 
 module.exports = router;
