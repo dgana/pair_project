@@ -10,13 +10,19 @@
 	<link href="css/main.css" rel="stylesheet">
 
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Ek+Mukta|Orbitron|Russo+One|Shojumaru|Bungee+Shade" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ek+Mukta|Orbitron|Russo+One|Shojumaru|Bungee+Shade|Chewy|Boogaloo|Fredoka+One|Luckiest+Guy|Rum+Raisin|Bubblegum+Sans|Gloria+Hallelujah|" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<div id="intro">
     <div class="container">
-      <h1>Please Pick Your Character</h1>
+      <h1>Classes</h1>
+			<hr style="margin-bottom: 50px;">
+			<h2>Tree of Savior has 4 base classes: Archer, Cleric, Swordsman and Wizard.</h2>
+			<h2 style="margin-bottom: 50px;">These base classes can be advanced further, for a total of 80 classes, each with different abilities.</h2>
       <div class="character-box">
 				<div class="class-title">
 					<p>Swordsman</p>
@@ -29,13 +35,13 @@
 				</div>
         <div class="image-box">
 					<div class="character-img-box" id="swordsman">
-						<img src="assets/characters/swordman/male/swordsman.gif" alt="Swordsman Image">
+						<img src="assets/characters/swordman/male/swordsman.gif" alt="Swordsman Image" id="sw">
 					</div>
 					<div class="character-img-box" id="wizard">
-						<img src="assets/characters/wizard/male/wizard.gif" alt="Wizard Image">
+						<img src="assets/characters/wizard/male/wizard.gif" alt="Wizard Image" id="wz">
 					</div>
 					<div class="character-img-box" id="archer">
-						<img src="assets/characters/archer/male/archer.gif" alt="Archer Image" onclick="">
+						<img src="assets/characters/archer/male/archer.gif" alt="Archer Image" id="ar">
 					</div>
         </div>
       </div>
@@ -52,7 +58,9 @@
 			</div>
 			<div class="start-button">
 				<form class="" action="/className" method="post">
+					<label>Your Name: </label>
 					<input type="hidden" name="job" id="classInput" value="">
+					<input type="text" name="player" value="" id="input_name" required="" style="background-color:rgb(255, 255, 179)">
 					<input type="submit" class="button" value="Start">
 				</form>
 			</div>
@@ -66,14 +74,42 @@
 	let archer = document.getElementById('archer')
 	let inputClass = document.getElementById('classInput')
 
+	let swordmanImage = $("#sw")
+	let wizardImage = $("#wz")
+	let archerImage = $("#ar")
+
 	swordsman.addEventListener("click", function(){
 		inputClass.value = "Swordsman"
+
+		swordsman.style.border = "2px solid white";
+		swordsman.style.backgroundColor = "rgba(90,90,90,0.6)";
+		wizard.style.border = "0px";
+		wizard.style.backgroundColor = "inherit";
+		archer.style.border = "0px";
+		archer.style.backgroundColor = "inherit";
+		swordmanImage.css("opacity","1")
 	});
 	wizard.addEventListener("click", function(){
 		inputClass.value = "Wizard"
+
+		wizard.style.border = "2px solid white";
+		wizard.style.backgroundColor = "rgba(90,90,90,0.6)";
+		archer.style.border = "0px";
+		archer.style.backgroundColor = "inherit";
+		swordsman.style.border = "0px";
+		swordsman.style.backgroundColor = "inherit";
+		wizardImage.css("opacity","1")
 	});
 	archer.addEventListener("click", function(){
 		inputClass.value = "Archer"
+
+		archer.style.border = "2px solid white";
+		archer.style.backgroundColor = "rgba(90,90,90,0.6)";
+		swordsman.style.border = "0px";
+		swordsman.style.backgroundColor = "inherit";
+		wizard.style.border = "0px";
+		wizard.style.backgroundColor = "inherit";
+		archerImage.css("opacity","1")
 	});
 
 	</script>

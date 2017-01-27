@@ -94,9 +94,9 @@
       </div>
       <div class="status-command-box">
         <form class="" action="/reset" method="post">
-          <input type="hidden" name="start_job" value="<%= user.start_job %>">
+          <input type="hidden" name="start_job" value="<%= user.job %>">
           <input type="submit" name="reset" class="btn" id="reset-status" value="Reset">
-        </form>  
+        </form>
       </div>
     </div>
     <div class="status-description">
@@ -124,7 +124,11 @@
     </div>
     <div class="navbox">
       <div class="name-box">
-        <p>Name : </p><i> John Doe </i>
+        <p>Name : </p><i> <%= user.name %> </i>
+				<form class="" action="/delete" method="post">
+          <input type="hidden" name="user_id" value="<%= user.id %>">
+          <input type="submit" name="delete" class="btn" id="delete-status" value="Delete Player">
+        </form>
       </div>
       <div class="command-button">
         <button type="button" name="button" class="btn find-monster" onclick="calculateExp()" id="find-monster">Find Monster</button>
@@ -140,10 +144,10 @@
     <div class="rank-tree">
       <div class="rank">
         <div class="rank-title">
-          <p>Basic</p>
+          <p>Your Class</p>
         </div>
         <div class="rank-image">
-          <img src="assets/characters/swordman/male/swordsman.gif" alt="Swordsman Image">
+          <img src="assets/characters/swordman/male/<%= user.job %>.gif" alt="Swordsman Image">
         </div>
       </div>
       <div class="rank">
@@ -235,7 +239,7 @@
   let spirit = "spr"
   let dexterity = "dex"
 
-  
+
 
 	up_str.addEventListener("click", function(){
 		if(limit_status1.innerHTML === "1"){

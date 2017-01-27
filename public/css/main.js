@@ -210,7 +210,7 @@ export default StyleSheet.create({
     },
     "command-button": {
         "position": "relative",
-        "top": 0,
+        "top": 12,
         "width": "97%",
         "height": "15%",
         "marginTop": 10,
@@ -385,7 +385,7 @@ export default StyleSheet.create({
         "marginRight": 10,
         "marginBottom": 20,
         "marginLeft": 10,
-        "paddingLeft": "34%"
+        "paddingLeft": "46%"
     },
     "btn": {
         "marginTop": 0,
@@ -527,5 +527,13 @@ export default StyleSheet.create({
         "bottom": 20,
         "left": 0,
         "width": "100%"
+    },
+    "delete-status": {
+        "position": "absolute",
+        "background": "rgb(255, 77, 77)",
+        "right": "4%",
+        "height": "8%",
+        "top": "11%",
+        "width": "30%"
     }
 });

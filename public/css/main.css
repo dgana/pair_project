@@ -164,7 +164,7 @@ html, body {
 
 .command-button {
   position: relative;
-  top: 0px;
+  top: 12px;
   width: 97%;
   height: 15%;
   margin: 10px;
@@ -452,4 +452,13 @@ input[type="text"] {
   bottom: 20px;
   left: 0px;
   width: 100%;
+}
+
+#delete-status {
+  position: absolute;
+  background: rgb(255, 77, 77);
+  right: 4%;
+  height: 8%;
+  top: 11%;
+  width: 30%;
 }
