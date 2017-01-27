@@ -86,7 +86,7 @@ export default StyleSheet.create({
     "rank-title": {
         "width": "100%",
         "height": "16%",
-        "backgroundColor": "rgba(60, 60, 60,0.8)",
+        "backgroundColor": "rgb(77, 184, 255)",
         "textAlign": "center"
     },
     "rank-title p": {
@@ -123,7 +123,7 @@ export default StyleSheet.create({
     "result-title": {
         "width": "100%",
         "height": "16%",
-        "backgroundColor": "rgba(75, 75, 75,0.8)",
+        "backgroundColor": "rgb(77, 184, 255)",
         "textAlign": "center"
     },
     "result-title p": {
@@ -149,7 +149,7 @@ export default StyleSheet.create({
     "navbar-title": {
         "width": "100%",
         "height": "10%",
-        "backgroundColor": "rgba(75, 75, 75,0.8)",
+        "backgroundColor": "rgb(77, 184, 255)",
         "textAlign": "left",
         "paddingLeft": "2%"
     },
@@ -363,7 +363,7 @@ export default StyleSheet.create({
     "status-title": {
         "width": "100%",
         "height": "10%",
-        "backgroundColor": "rgba(60, 60, 60,0.8)",
+        "backgroundColor": "rgb(77, 184, 255)",
         "textAlign": "left",
         "paddingLeft": "2%"
     },

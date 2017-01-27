@@ -41,6 +41,10 @@ router.get('/main', function(req, res, next) {
   })
 });
 
+router.post('/refresh', function(req, res, next) {
+  res.redirect('/main')
+});
+
 router.post('/delete', function(req, res, next) {
   db.Players.destroy({
     where: {

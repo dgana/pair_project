@@ -93,6 +93,9 @@
         </div>
       </div>
       <div class="status-command-box">
+				<form class="" action="/refresh" method="post">
+          <input type="submit" name="refresh" class="btn" id="refresh-status" value="Submit">
+        </form>
         <form class="" action="/reset" method="post">
           <input type="hidden" name="start_job" value="<%= user.job %>">
           <input type="submit" name="reset" class="btn" id="reset-status" value="Reset">
@@ -147,7 +150,15 @@
           <p>Your Class</p>
         </div>
         <div class="rank-image">
-          <img src="assets/characters/swordman/male/<%= user.job %>.gif" alt="Swordsman Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+							<img src="assets/characters/swordman/male/<%= user.job %>.gif" alt="Swordsman Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/<%= user.job %>.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/<%= user.job %>.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
       <div class="rank">
@@ -155,10 +166,26 @@
           <p>Rank 1</p>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/highlander.gif" alt="Higlander Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/highlander.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/pyromancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/sapper.gif" alt="Higlander Image">
+					<% } %>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/peltasta.gif" alt="Peltasta Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/peltasta.gif" alt="Peltasta Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/cryomancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/hunter.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
       <div class="rank">
@@ -166,10 +193,26 @@
           <p>Rank 2</p>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/barbarian.gif" alt="Barbarian Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/barbarian.gif" alt="Barbarian Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/necromancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/wugushi.gif" alt="Higlander Image">
+					<% } %>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/hoplite.gif" alt="Hoplite Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/hoplite.gif" alt="Hoplite Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/alchemist.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/scout.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
       <div class="rank">
@@ -177,10 +220,26 @@
           <p>Rank 3</p>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/corsair.gif" alt="Corsair Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/corsair.gif" alt="Corsair Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/chronomancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/rogue.gif" alt="Higlander Image">
+					<% } %>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/squire.gif" alt="Squire Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/squire.gif" alt="Squire Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/sorcerer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/fletcher.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
     </div>

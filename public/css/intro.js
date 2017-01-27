@@ -130,7 +130,7 @@ export default StyleSheet.create({
     },
     "description-box": {
         "width": "100%",
-        "height": "15%",
+        "height": "16%",
         "marginTop": 5,
         "marginRight": 0,
         "marginBottom": 5,
