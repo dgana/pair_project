@@ -44,7 +44,7 @@ export default StyleSheet.create({
     },
     "intro": {
         "marginTop": -20,
-        "backgroundColor": "rgb(22, 26, 24)",
+        "background": "url(\"../assets/background-img/img-3.jpg\")",
         "height": 100 * vh
     },
     "container": {
@@ -60,7 +60,7 @@ export default StyleSheet.create({
     },
     "container h1": {
         "fontFamily": "'Bubblegum Sans', sans-serif",
-        "color": "rgb(170, 170, 170)",
+        "color": "white",
         "textAlign": "center",
         "fontSize": 46,
         "marginTop": 20,
@@ -70,7 +70,7 @@ export default StyleSheet.create({
     },
     "container h2": {
         "fontFamily": "'Bubblegum Sans', sans-serif",
-        "color": "rgb(170, 170, 170)",
+        "color": "white",
         "textAlign": "left",
         "fontSize": 30,
         "marginTop": 5,
@@ -81,7 +81,6 @@ export default StyleSheet.create({
     "character-box": {
         "width": "100%",
         "height": "50%",
-        "backgroundColor": "rgb(22, 26, 24)",
         "float": "left"
     },
     "image-box": {
