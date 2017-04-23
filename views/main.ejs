@@ -4,13 +4,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><%= title %></title>
+	<title>RPG Interface</title>
 
 	<link href="css/main.css" rel="stylesheet">
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Ek+Mukta|Orbitron|Russo+One|Shojumaru|Bungee+Shade" rel="stylesheet">
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -90,8 +93,13 @@
         </div>
       </div>
       <div class="status-command-box">
-        <button type="button" name="button" class="btn" id="submit-status">Submit</button>
-        <button type="button" name="button" class="btn" id="reset-status">Reset</button>
+				<form class="" action="/refresh" method="post">
+          <input type="submit" name="refresh" class="btn" id="refresh-status" value="Submit">
+        </form>
+        <form class="" action="/reset" method="post">
+          <input type="hidden" name="start_job" value="<%= user.job %>">
+          <input type="submit" name="reset" class="btn" id="reset-status" value="Reset">
+        </form>
       </div>
     </div>
     <div class="status-description">
@@ -119,7 +127,11 @@
     </div>
     <div class="navbox">
       <div class="name-box">
-        <p>Name : </p><i> John Doe </i>
+        <p>Name : </p><i> <%= user.name %> </i>
+				<form class="" action="/delete" method="post">
+          <input type="hidden" name="user_id" value="<%= user.id %>">
+          <input type="submit" name="delete" class="btn" id="delete-status" value="Delete Player">
+        </form>
       </div>
       <div class="command-button">
         <button type="button" name="button" class="btn find-monster" onclick="calculateExp()" id="find-monster">Find Monster</button>
@@ -135,10 +147,18 @@
     <div class="rank-tree">
       <div class="rank">
         <div class="rank-title">
-          <p>Basic</p>
+          <p>Your Class</p>
         </div>
         <div class="rank-image">
-          <img src="assets/characters/swordman/male/swordsman.gif" alt="Swordsman Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+							<img src="assets/characters/swordman/male/<%= user.job %>.gif" alt="Swordsman Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/<%= user.job %>.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/<%= user.job %>.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
       <div class="rank">
@@ -146,10 +166,26 @@
           <p>Rank 1</p>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/highlander.gif" alt="Higlander Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/highlander.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/pyromancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/sapper.gif" alt="Higlander Image">
+					<% } %>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/peltasta.gif" alt="Peltasta Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/peltasta.gif" alt="Peltasta Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/cryomancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/hunter.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
       <div class="rank">
@@ -157,10 +193,26 @@
           <p>Rank 2</p>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/barbarian.gif" alt="Barbarian Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/barbarian.gif" alt="Barbarian Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/necromancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/wugushi.gif" alt="Higlander Image">
+					<% } %>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/hoplite.gif" alt="Hoplite Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/hoplite.gif" alt="Hoplite Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/alchemist.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/scout.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
       <div class="rank">
@@ -168,10 +220,26 @@
           <p>Rank 3</p>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/corsair.gif" alt="Corsair Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/corsair.gif" alt="Corsair Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/chronomancer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/rogue.gif" alt="Higlander Image">
+					<% } %>
         </div>
         <div class="split-rank">
-          <img src="assets/characters/swordman/male/squire.gif" alt="Squire Image">
+					<% if(user.job === "Swordsman" || user.job === "Highlander" || user.job === "Peltasta" || user.job === "Hoplite" || user.job === "Barbarian" || user.job === "Corsair" || user.job === "Squire") { %>
+          	<img src="assets/characters/swordman/male/squire.gif" alt="Squire Image">
+					<% } %>
+					<% if(user.job === "Wizard" || user.job === "Pyromancer" || user.job === "Cryomancer" || user.job === "Necromancer" || user.job === "Alchemist" || user.job === "Chronomancer" || user.job === "Sorcerer") { %>
+          	<img src="assets/characters/wizard/male/sorcerer.gif" alt="Higlander Image">
+					<% } %>
+					<% if(user.job === "Archer" || user.job === "Sapper" || user.job === "Hunter" || user.job === "Wugushi" || user.job === "Scout" || user.job === "Rogue" || user.job === "Fletcher") { %>
+          	<img src="assets/characters/archer/male/fletcher.gif" alt="Higlander Image">
+					<% } %>
         </div>
       </div>
     </div>
@@ -206,11 +274,16 @@
 	let exp = document.getElementById('exp')
 	let history = document.getElementById('history')
 	let find_monster = document.getElementById('find-monster')
-	let submit_status = document.getElementById('submit-status')
 	let reset_status = document.getElementById('reset-status')
 
-	submit_status.disabled = true
 	reset_status.disabled = true
+
+	current_str.innerHTML = <%= user.strength %>
+	current_con.innerHTML = <%= user.constitution %>
+	current_int.innerHTML = <%= user.intelligence %>
+	current_spr.innerHTML = <%= user.spirit %>
+	current_dex.innerHTML = <%= user.dexterity %>
+  current_level.innerHTML = <%= user.level %>
 
 	up_str.style.pointerEvents = "none"
   up_con.style.pointerEvents = "none"
@@ -225,25 +298,39 @@
   let spirit = "spr"
   let dexterity = "dex"
 
+
+
 	up_str.addEventListener("click", function(){
- 		if(limit_status1.innerHTML === "1"){
+		if(limit_status1.innerHTML === "1"){
 			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
-      submitResetbuttonDisabled()
-      upStatusDisabled()
+			upStatusDisabled()
 			decreaseLimitStatus()
-      arr.push(strength)
-      console.log(arr)
+			arr.push(strength)
+			console.log(arr)
 		} else {
 			current_str.innerHTML = parseInt(current_str.innerHTML) + 1
 			decreaseLimitStatus()
-      arr.push(strength)
-      console.log(arr)
+			arr.push(strength)
+			console.log(arr)
 		}
+
+    if (limit_status1.innerHTML === "0") {
+      find_monster.disabled = false
+      history.innerHTML = "";
+      reset_status.disabled = false
+    }
+
+		$.ajax({
+	    method: "POST",
+	    url: "/up_str",
+	    data: {up_str: current_str.innerHTML, up_lvl: current_level.innerHTML},
+	    dataType: "json"
+	    })
 	});
+
 	up_con.addEventListener("click", function(){
 		if(limit_status2.innerHTML === "1"){
 			current_con.innerHTML = parseInt(current_con.innerHTML) + 1
-      submitResetbuttonDisabled()
       upStatusDisabled()
 			decreaseLimitStatus()
       arr.push(constitution)
@@ -254,11 +341,23 @@
       arr.push(constitution)
       console.log(arr)
 		}
+
+    if (limit_status1.innerHTML === "0") {
+      find_monster.disabled = false
+      history.innerHTML = "";
+      reset_status.disabled = false
+    }
+
+    $.ajax({
+      method: "POST",
+      url: "/up_con",
+      data: {up_con: current_con.innerHTML, up_lvl: current_level.innerHTML},
+      dataType: "json"
+      })
 	});
 	up_int.addEventListener("click", function(){
 		if(limit_status3.innerHTML === "1"){
 			current_int.innerHTML = parseInt(current_int.innerHTML) + 1
-      submitResetbuttonDisabled()
       upStatusDisabled()
 			decreaseLimitStatus()
       arr.push(intelligence)
@@ -269,11 +368,23 @@
       arr.push(intelligence)
       console.log(arr)
 		}
+
+    if (limit_status1.innerHTML === "0") {
+      find_monster.disabled = false
+      history.innerHTML = "";
+      reset_status.disabled = false
+    }
+
+    $.ajax({
+      method: "POST",
+      url: "/up_int",
+      data: {up_int: current_int.innerHTML, up_lvl: current_level.innerHTML},
+      dataType: "json"
+      })
 	});
 	up_spr.addEventListener("click", function(){
 		if(limit_status4.innerHTML === "1"){
 			current_spr.innerHTML = parseInt(current_spr.innerHTML) + 1
-      submitResetbuttonDisabled()
       upStatusDisabled()
 			decreaseLimitStatus()
       arr.push(spirit)
@@ -284,11 +395,23 @@
       arr.push(spirit)
       console.log(arr)
 		}
+
+    if (limit_status1.innerHTML === "0") {
+      find_monster.disabled = false
+      history.innerHTML = "";
+      reset_status.disabled = false
+    }
+
+    $.ajax({
+      method: "POST",
+      url: "/up_spr",
+      data: {up_spr: current_spr.innerHTML, up_lvl: current_level.innerHTML},
+      dataType: "json"
+      })
 	});
 	up_dex.addEventListener("click", function(){
 		if(limit_status5.innerHTML === "1"){
 			current_dex.innerHTML = parseInt(current_dex.innerHTML) + 1
-      submitResetbuttonDisabled()
       upStatusDisabled()
 			decreaseLimitStatus()
       arr.push(dexterity)
@@ -299,17 +422,22 @@
       arr.push(dexterity)
       console.log(arr)
 		}
+
+    if (limit_status1.innerHTML === "0") {
+      find_monster.disabled = false
+      history.innerHTML = "";
+      reset_status.disabled = false
+    }
+
+    $.ajax({
+      method: "POST",
+      url: "/up_dex",
+      data: {up_dex: current_dex.innerHTML, up_lvl: current_level.innerHTML},
+      dataType: "json"
+      })
 	});
 
 
-
-	submit_status.addEventListener("click", function(){
-    history.innerHTML = "";
-		find_monster.disabled = false
-		submit_status.disabled = true
-		reset_status.disabled = true
-    arr = []
-	});
 	reset_status.addEventListener("click", function(){
     history.innerHTML = "";
 		find_monster.disabled = false
@@ -382,11 +510,6 @@
     up_int.style.pointerEvents = "none"
     up_spr.style.pointerEvents = "none"
     up_dex.style.pointerEvents = "none"
-  }
-
-  let submitResetbuttonDisabled = () => {
-    submit_status.disabled = false
-    reset_status.disabled = false
   }
 
 
