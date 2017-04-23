@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     constitution: DataTypes.INTEGER,
     intelligence: DataTypes.INTEGER,
     spirit: DataTypes.INTEGER,
-    dexterity: DataTypes.INTEGER
+    dexterity: DataTypes.INTEGER,
+    level: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
